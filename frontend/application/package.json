@@ -42,6 +42,9 @@
     "regenerator-runtime": "^0.13.3",
     "reselect": "^4.0.0",
     "style-loader": "^1.0.0",
-    "whatwg-fetch": "^3.0.0"
+    "whatwg-fetch": "^3.0.0",
+    "@mui/material": "^5.0.0",
+    "@emotion/react": "^11.7.0",
+    "@emotion/styled": "^11.6.0"
   }
 }
