@@ -34,5 +34,5 @@ zope.interface==4.6.0
 zope.sqlalchemy==1.1
 cryptography==2.8
 pytest==5.3.1
-git+git://github.com/gebeto/pyramid_jwt.git
+git+http://github.com/gebeto/pyramid_jwt.git
 PyMySQL==0.9.3
