@@ -1,0 +1,85 @@
+{% macro title(title, button = None) -%}
+<h4 class="d-flex justify-content-between align-items-center mb-3">
+	<span>{{ title }}</span>
+	{% if button %}
+	<button class="btn btn-success btn-sm px-4" disabled>{{ button }}</button>
+	{% endif %}
+</h4>
+{%- endmacro %}
+
+
+{% macro card(card_title) %}
+<div class="card">
+	<h3 class="card-header">
+		{{ card_title }}
+	</h3>
+	<div class="card-body">
+		{{ caller() }}
+	</div>
+</div>
+{% endmacro %}
+
+
+{% macro form(disabled = False) %}
+	<form>
+		<fieldset {%if disabled%}disabled{%endif%}>
+			{{ caller() }}
+		</fieldset>
+	</form>
+{% endmacro %}
+
+
+{% macro field(title, value, type = "text", className = None, placeholder = '') %}
+<div class="form-group {{className}}">
+	<label>{{title}}</label>
+	<input value="{{value}}" type="{{type}}" class="form-control" placeholder="{{placeholder}}">
+</div>
+{% endmacro %}
+
+{% macro button(title, disabled = False) %}
+<button
+	type="submit"
+	class="btn btn-primary"
+	{% if disabled %}
+		disabled
+	{% endif %}
+>{{title}}</button>
+{% endmacro %}
+
+{% macro form_row() %}
+	<div class="form-row">
+		{{ caller() }}
+	</div>
+{% endmacro %}
+
+
+{% macro column_loading(column_title, column_add_button = None) %}
+{{ title(column_title, column_add_button) }}
+
+<ul class="list-group mb-3">
+	<li class="list-group-item list-group-item-action d-flex justify-content-center align-items-center p-5">
+		<div class="spinner-border" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+		<h5 class="m-0 ml-3 text-muted">Loading...</h5>
+	</li>
+</ul>
+{% endmacro %}
+
+
+{% macro column_table_loading(column_title, column_add_button = None) %}
+{{ title(column_title, column_add_button) }}
+
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<th class="text-center p-5">
+				<div class="spinner-border" role="status">
+					<span class="sr-only">Loading...</span>
+				</div>
+				<h5 class="m-0 ml-3 text-muted">Loading...</h5>
+			</th>
+		</tr>
+	</tbody>
+</table>
+{% endmacro %}

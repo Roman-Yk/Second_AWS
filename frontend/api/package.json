@@ -1,0 +1,12 @@
+{
+  "name": "@tms/api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {},
+  "devDependencies": {},
+  "dependencies": {}
+}

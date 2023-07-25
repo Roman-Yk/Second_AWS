@@ -1,0 +1,12 @@
+{
+	"name": "tms",
+	"private": true,
+	"scripts": {
+		"translate": "yarn workspace @tms/application translate"
+	},
+	"workspaces": [
+		"application",
+		"shared",
+		"api"
+	]
+}

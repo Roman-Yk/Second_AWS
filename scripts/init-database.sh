@@ -1,0 +1,1 @@
+docker-compose exec backend initialize_licensing_elsman_db production.ini

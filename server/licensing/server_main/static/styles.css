@@ -1,0 +1,17 @@
+/* Empty */
+
+.settings-icon {
+	background-image: url(/static/icons/settings.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+
+	cursor: pointer;
+
+	display: inline-block;
+	width: 24px;
+
+	/*display: inline-block;
+	width: 1em;
+	height: 1em;*/
+}

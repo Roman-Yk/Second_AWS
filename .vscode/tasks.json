@@ -1,0 +1,17 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Python: server debug",
+            "type": "python",
+            "request": "launch",
+            "module": "pserve",
+            "args": [
+                "development.ini"
+            ],
+            "jinja": true
+        }
+    ]
+}

@@ -1,0 +1,76 @@
+key,ref,en,ua,nl
+add,,Add,Додати,Toevoegen
+edit,,Edit,Редагувати,BewerkEN
+cancel,,Cancel,Скасувати,Annuleer
+copy,,Copy,Копіювати,Kopiëren
+close,,Close,Закрити,SLUITEN
+copied,,Copied!,Зкопійовано!,Gekopieerd!
+delete,,Delete,Видалити,Verwijderen
+save,,Save,Зберегти,Opslaan
+disable,,Disable,Деактивувати,Uitschakelen
+disabled,,Disabled,Неактивно,UITGESCHAKELD
+enable,,Enable,Активувати,Inschakelen
+enabled,,Enabled,Активно,Ingeschakeld
+is_active,,Active,Активно,Actief
+deactivate,,Deactivate,Відключити,Deactiveren
+is_not_active,,Not active,Не активно,Niet actief
+email,,Email,Емейл,E-mail
+phone,,Phone,Номер телефону,Telefoon
+first_name,,First name,Імя,Voornaam
+last_name,,Last name,Фамілія,Achternaam
+loading,,Loading,Завантаження,Bezig met laden
+type,,Type,Тип,Type
+,,,,
+modals.license_add.title,,Add new product license,Додати нову ліцензію,Nieuwe productlicentie toevoegen
+modals.license_add.fields.name,,Name,Назва,Naam
+modals.license_add.fields.product,,Product,Продукт,Product
+modals.license_add.fields.type,,Type,Тип,Type
+,,,,
+modals.product_add.title,,Add new product,Додати продукт,Nieuw product toevoegen
+modals.product_add.fields.name,,Name,Назва,Naam
+modals.product_add.fields.description,,Description,Опис,Beschrijving
+,,,,
+modals.client_license_add.title,,Add client,Створення клієнта,Klant toevoegen
+modals.client_license_add.fields.client,,Client,Клієнт,Cliënt
+modals.client_license_add.fields.computers_count,,Computers count,Кількість компютерів,Computers tellen
+modals.client_license_edit.title,,Edit client,Редагування клієнта,Bewerk klant
+modals.client_license_edit.fields.client,,Client,Клієнт,Cliënt
+modals.client_license_edit.fields.first_name,first_name,,,
+modals.client_license_edit.fields.last_name,last_name,,,
+modals.client_license_edit.fields.new_password,,New password,Новий пароль,Nieuw paswoord
+modals.client_license_edit.fields.email,email,,,
+modals.client_license_edit.fields.phone,phone,,,
+modals.client_license_edit.fields.client_company,,Client company,Компанія клієнта,Klant bedrijf
+modals.client_license_edit.fields.computers_count,,Computers count,Кількість компютерів,Computers tellen
+modals.client_license_edit.fields.expiration_date,,Expiration date,Дата закінчення,UITERSTE VERVAL DATUM
+modals.client_license_edit.fields.features,,Features,Функціонал,FUNCTIONALITEITEN
+,,,,
+modals.client_computers.title,,Client Computers,Компютери клієнтів,Clientcomputers
+,,,,
+license_key.title,,License key,Ключ ліцензії,Licentiesleutel
+,,,,
+manager.products.title,,My Products,Мої продукти,Mijn producten
+manager.products.add_license,,Add license,Додати ліцензію,Voeg licentie toe
+manager.products.not_found,,Products not found,Продуктів не знайдено,Producten niet gevonden
+manager.products.list.item.type,,Type,Тип,Type
+,,,,
+manager.client_licenses.title,,Client Licenses,Ліцензії клієнтів,Clientlicenties
+manager.client_licenses.refresh_list,,Refresh list,Оновити список,Ververs lijst
+manager.client_licenses.add_client_license,,Add client license,Створити ліцензію,Clientlicentie toevoegen
+manager.client_licenses.select_product,,Please select a product,Будь ласка оберіть продукт,Selecteer een product
+manager.client_licenses.not_found,,Clients for '%{license_product_name} %{license_name}' product not found!,Клієнти для продукту '%{license_product_name} %{license_name}' не знайдено!,Clients voor '% {license_product_name}% {license_name}' product niet gevonden!
+manager.client_licenses.list.item.registration_date,,Registration Date,Дата реєстрації,registratie datum
+manager.client_licenses.list.item.expiration_date,,Expiration date,Дата закінчення,Uiterste VERVAL DATUM
+manager.client_licenses.list.item.active_computers,,Active computers,Активні компютери,Actieve computers
+manager.client_licenses.list.item.active_computers_show,,Show,Список,Tonen
+,,,,
+client.licenses.title,,My Licenses,Ліцензії,Mijn licenties
+client.licenses.not_found,,Licenses not found,Ліцензій не знайдено,Licenties niet gevonden
+client.licenses.list.item.computers_count,,Computers count,Кількість компютерів,computers_count
+client.licenses.list.item.trial_expiration_days,,Trial expiration days,Днів до закінчення,Vervaldagen van de proefperiode
+client.licenses.list.item.download_app,,Download App v%{software_version},Скачати v%{software_version},Download app v% {software_version}
+client.licenses.list.item.documentation,,Docs,Документація,Docs
+,,,,
+client.computers.title,,My Computers,Компютери,Mijn computers
+client.computers.select_a_license,,Please select a license,Виберіть ліцензію,Selecteer een licentie
+client.computers.license_has_not_been_activated,,This license has not been activated on any device,Ліцензія не була активованою на жодному девайсі,Deze licentie is op geen enkel apparaat geactiveerd

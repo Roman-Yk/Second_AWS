@@ -1,0 +1,48 @@
+{% import './defs.jinja2' as defs %}
+{% extends "../base.jinja2" %}
+
+
+{% block breadcrumb %}
+<div class="container pt-3">
+	<ol class="breadcrumb m-0">
+		<li class="breadcrumb-item"><a href="/">Home</a></li>
+		<li class="breadcrumb-item active" aria-current="page">Settings</li>
+	</ol>
+</div>
+{% endblock %}
+
+{% block content %}
+	<div class="col-md-6 mb-3">
+		{% call defs.card("Change password") %}
+			{% call defs.form() %}
+					{{ defs.field("Current password", "", "password", placeholder="****") }}
+					{% call defs.form_row() %}
+						{{ defs.field("New password", "", "password", placeholder="****", className="col-lg-6") }}
+						{{ defs.field("Repeat new password", "", "password", placeholder="****", className="col-lg-6") }}
+					{% endcall %}
+				{{ defs.button("Change password", False) }}
+			{% endcall %}
+		{% endcall %}
+	</div>
+
+	<div class="col-md-6 mb-3">
+		{% call defs.card("Personal info") %}
+			{% call defs.form(True) %}
+				{% call defs.form_row() %}
+					{{ defs.field("First name", personal_info["first_name"], "text", "col-6") }}
+					{{ defs.field("Last name", personal_info["last_name"], "text", "col-6") }}
+				{% endcall %}
+				{{ defs.field("Email", personal_info["email"], "email") }}
+				{{ defs.button("Save", False) }}
+			{% endcall %}
+		{% endcall %}
+	</div>
+{% endblock content %}
+
+
+{% block scripts %}
+	<script>
+		window.USER_PERSONAL_INFO = {{ personal_info | tojson }};
+	</script>
+	<script src="/static/js/settings.js"></script>
+{% endblock %}

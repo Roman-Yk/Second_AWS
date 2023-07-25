@@ -1,0 +1,270 @@
+{
+	"info": {
+		"_postman_id": "c4eedb90-1333-4530-acdc-ceebc1249b8a",
+		"name": "Elsman Licenses",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "activation",
+			"item": [
+				{
+					"name": "activate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"hardware_id\": \"ivan_vasylovskyy-10@work\",\n\t\"product_guid\": \"c25dfe14-690e-469f-b9ee-56402c59b349\",\n\t\"public_key\": \"MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKIYjqAcBRbUUvUY4YcYncjLTTHzHzy5cvlyK0buiHQZtH1MJNbY9b5QTZ7YLfQ7LvOtFtgDElZF2lLwFeX1CRkCAwEAAQ==\",\n\t\"ip_address\": \"192.168.8.9\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/api/activation/activate",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"api",
+								"activation",
+								"activate"
+							]
+						},
+						"description": "Activate user license"
+					},
+					"response": []
+				},
+				{
+					"name": "deactivate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"hardware_id\": \"ivan_vasylovskyy-10@work\",\n\t\"product_guid\": \"c25dfe14-690e-469f-b9ee-56402c59b349\",\n\t\"public_key\": \"MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMVitmaDnc6pMbHHVZ4nd3sn+D1AI8kDZcRJqpfV3fNxjOmOUr0qWBWLjFK4H/+cQ7Kh4n0Kh0INPJgm86DZyhcCAwEAAQ==\",\n\t\"ip_address\": \"192.168.8.8\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/api/activation/deactivate",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"api",
+								"activation",
+								"deactivate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"hardware_id\": \"ivan_vasylovskyy-10@work\",\n\t\"product_guid\": \"c25dfe14-690e-469f-b9ee-56402c59b349\",\n\t\"public_key\": \"MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKIYjqAcBRbUUvUY4YcYncjLTTHzHzy5cvlyK0buiHQZtH1MJNbY9b5QTZ7YLfQ7LvOtFtgDElZF2lLwFeX1CRkCAwEAAQ==\",\n\t\"ip_address\": \"192.168.8.9\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/api/activation/check",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"api",
+								"activation",
+								"check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reactivate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"hardware_id\": \"ivan_vasylovskyy-10@work\",\n\t\"product_guid\": \"c25dfe14-690e-469f-b9ee-56402c59b349\",\n\t\"public_key\": \"MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKIYjqAcBRbUUvUY4YcYncjLTTHzHzy5cvlyK0buiHQZtH1MJNbY9b5QTZ7YLfQ7LvOtFtgDElZF2lLwFeX1CRkCAwEAAQ==\",\n\t\"ip_address\": \"192.168.8.9\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/api/activation/reactivate",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"api",
+								"activation",
+								"reactivate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "stata",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/api/activation/stata",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"api",
+								"activation",
+								"stata"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "yaroslav_nychkalo@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "submit",
+									"value": "submit",
+									"type": "text"
+								},
+								{
+									"key": "__formid__",
+									"value": "deform",
+									"type": "text"
+								},
+								{
+									"key": "_charset_",
+									"value": "UTF-8",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base}}/auth/login",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_dev",
+			"value": "http://localhost/licenses",
+			"type": "string"
+		},
+		{
+			"key": "base_prod",
+			"value": "http://40.115.32.143/licenses",
+			"type": "string"
+		}
+	]
+}

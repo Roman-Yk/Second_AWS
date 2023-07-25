@@ -1,0 +1,18 @@
+{% import '../defs.jinja2' as defs %}
+{% extends "../../base.jinja2" %}
+
+
+{% block content %}
+	<div class="col-md-5 mb-4">
+		{{ defs.column_loading("My Licenses") }}
+	</div>
+
+	<div class="col-md-7">
+		{{ defs.column_waiting("My Computers", "Please select a license") }}
+	</div>
+{% endblock content %}
+
+
+{% block scripts %}
+	<script src="/static/js/client.js?v={{request.server_start_time}}"></script>
+{% endblock %}

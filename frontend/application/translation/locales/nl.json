@@ -1,0 +1,114 @@
+{
+    "add": "Toevoegen",
+    "edit": "BewerkEN",
+    "cancel": "Annuleer",
+    "copy": "Kopiëren",
+    "close": "SLUITEN",
+    "copied": "Gekopieerd!",
+    "delete": "Verwijderen",
+    "save": "Opslaan",
+    "disable": "Uitschakelen",
+    "disabled": "UITGESCHAKELD",
+    "enable": "Inschakelen",
+    "enabled": "Ingeschakeld",
+    "is_active": "Actief",
+    "deactivate": "Deactiveren",
+    "is_not_active": "Niet actief",
+    "email": "E-mail",
+    "phone": "Telefoon",
+    "first_name": "Voornaam",
+    "last_name": "Achternaam",
+    "loading": "Bezig met laden",
+    "type": "Type",
+    "modals": {
+        "license_add": {
+            "title": "Nieuwe productlicentie toevoegen",
+            "fields": {
+                "name": "Naam",
+                "product": "Product",
+                "type": "Type"
+            }
+        },
+        "product_add": {
+            "title": "Nieuw product toevoegen",
+            "fields": {
+                "name": "Naam",
+                "description": "Beschrijving"
+            }
+        },
+        "client_license_add": {
+            "title": "Klant toevoegen",
+            "fields": {
+                "client": "Cliënt",
+                "computers_count": "Computers tellen"
+            }
+        },
+        "client_license_edit": {
+            "title": "Bewerk klant",
+            "fields": {
+                "client": "Cliënt",
+                "first_name": "Voornaam",
+                "last_name": "Achternaam",
+                "new_password": "Nieuw paswoord",
+                "email": "E-mail",
+                "phone": "Telefoon",
+                "client_company": "Klant bedrijf",
+                "computers_count": "Computers tellen",
+                "expiration_date": "UITERSTE VERVAL DATUM",
+                "features": "FUNCTIONALITEITEN"
+            }
+        },
+        "client_computers": {
+            "title": "Clientcomputers"
+        }
+    },
+    "license_key": {
+        "title": "Licentiesleutel"
+    },
+    "manager": {
+        "products": {
+            "title": "Mijn producten",
+            "add_license": "Voeg licentie toe",
+            "not_found": "Producten niet gevonden",
+            "list": {
+                "item": {
+                    "type": "Type"
+                }
+            }
+        },
+        "client_licenses": {
+            "title": "Clientlicenties",
+            "refresh_list": "Ververs lijst",
+            "add_client_license": "Clientlicentie toevoegen",
+            "select_product": "Selecteer een product",
+            "not_found": "Clients voor '% {license_product_name}% {license_name}' product niet gevonden!",
+            "list": {
+                "item": {
+                    "registration_date": "registratie datum",
+                    "expiration_date": "Uiterste VERVAL DATUM",
+                    "active_computers": "Actieve computers",
+                    "active_computers_show": "Tonen"
+                }
+            }
+        }
+    },
+    "client": {
+        "licenses": {
+            "title": "Mijn licenties",
+            "not_found": "Licenties niet gevonden",
+            "list": {
+                "item": {
+                    "computers_count": "computers_count",
+                    "trial_expiration_days": "Vervaldagen van de proefperiode",
+                    "download_app": "Download app v% {software_version}",
+                    "documentation": "Docs"
+                }
+            }
+        },
+        "computers": {
+            "title": "Mijn computers",
+            "select_a_license": "Selecteer een licentie",
+            "license_has_not_been_activated": "Deze licentie is op geen enkel apparaat geactiveerd"
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"name": "root",
+			"path": ".",
+		},
+		{
+			"name": "nginx",
+			"path": "./nginx",
+		},
+		{
+			"name": "wordpress-plugin",
+			"path": "./wordpress-plugin-licenses-server",
+		},
+		{
+			"name": "frontend",
+			"path": "./frontend",
+		},
+		{
+			"name": "backend",
+			"path": "./server",
+		},
+	],
+	"settings": {}
+}

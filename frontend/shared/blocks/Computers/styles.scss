@@ -1,0 +1,58 @@
+.list-group {
+	border: 1px solid #ddd;
+	border-radius: 0.25rem;
+	overflow: hidden;
+}
+
+.list-group-bordered {
+	border: 1px solid #ddd;
+	border-radius: 0.25rem;
+}
+
+.list-group-scroll {
+	max-height: 60vh;
+	overflow-y: auto;
+	border: 1px solid #ddd;
+	border-radius: 0.4em;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.list-group-item {
+	border: none;
+	border-top: 1px solid #ddd;
+
+	&:first-child {
+		border: none;
+	}
+}
+
+.list-group-item-computer {
+	background-color: #fff;
+	padding: 0.4rem 0.4rem 0.4rem 0.9rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: none;
+	border-top: 1px solid #ddd;
+
+	&:first-child {
+		border-top: none;
+	}
+
+	&-centered {
+		justify-content: center;
+		align-items: center;
+	}
+
+	&-body {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		padding-right: 1rem;
+	}
+}
+
+.btn-group-min-100 {
+	min-width: 100px;
+}

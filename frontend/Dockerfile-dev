@@ -1,0 +1,21 @@
+FROM node:12.13.1-alpine3.9 as builder
+
+RUN mkdir /frontend
+WORKDIR /frontend
+
+# # Add all dependencies
+COPY application/package.json ./application/
+COPY shared/package.json ./shared/
+COPY api/package.json ./api/
+
+COPY package.json ./
+COPY yarn.lock ./
+
+# # Install dependencies
+# RUN yarn
+
+# Add project sources
+# COPY . .
+# RUN yarn install
+
+CMD ./dev-entrypoint.sh

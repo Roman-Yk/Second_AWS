@@ -1,0 +1,73 @@
+version: '3'
+
+
+services:
+  docs:
+    restart: always
+    build: docs
+    expose:
+      - 80
+
+  frontend:
+    restart: always
+    tty: true
+    build: frontend
+    volumes:
+      - frontend-dist:/frontend/application/dist:rw
+
+  backend:
+    tty: true
+    restart: always
+    build: server
+    env_file:
+      - .env.prod
+    links:
+      - database
+    depends_on:
+      - database
+    volumes:
+      - ./server/licensing:/app/licensing
+
+  nginx:
+    restart: always
+    build: nginx
+    ports:
+      - 80:80
+      - 443:443
+    links:
+      - docs
+      - backend
+      - frontend
+    volumes:
+      - ./files:/files:ro
+      - ./server/licensing:/app:ro
+      - frontend-dist:/app/server_main/static/js:ro
+      - ../certs/www.diamondfms.com.crt:/etc/nginx/ssl/www.diamondfms.com.crt
+      - ../certs/www.diamondfms.com.key:/etc/nginx/ssl/www.diamondfms.com.key
+
+  database:
+    restart: always
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    env_file:
+      - .env.prod
+    volumes:
+      - ./tmp/db:/var/lib/mysql
+
+  wordpress:
+    restart: always
+    image: wordpress
+    #ports:
+    #  - 444:443
+    # ports:
+    #   - 8080:80
+    env_file:
+      - .env.prod
+    volumes:
+      - ./tmp/wordpress:/var/www/html
+      - ./wordpress-plugin-licenses-server:/var/www/html/wp-content/plugins/licenses-server
+
+
+volumes:
+  frontend-dist:

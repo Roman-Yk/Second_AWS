@@ -1,0 +1,22 @@
+FROM python:3.7.4-alpine3.9
+
+# timezone setup
+RUN apk add --no-cache git
+RUN apk add --no-cache tzdata
+ENV TZ=Europe/Kiev
+
+RUN apk add --no-cache \
+	build-base linux-headers libffi-dev \
+	postgresql-dev
+
+WORKDIR /app
+
+ADD ./requirements.txt requirements.txt
+RUN pip --no-cache-dir install -q -r requirements.txt
+
+ADD . /app
+RUN pip --no-cache-dir install -q -e .
+
+EXPOSE 8000
+
+CMD pserve production.ini

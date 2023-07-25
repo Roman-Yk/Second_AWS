@@ -1,0 +1,23 @@
+version: '3'
+
+
+services:
+  database:
+    image: postgres:11-alpine
+    container_name: license-server-tests-database
+    expose:
+      - 5432
+    environment:
+      POSTGRES_DB: licenses
+      POSTGRES_USER: developer
+      POSTGRES_PASSWORD: leadsoft
+
+  backend:
+    tty: true
+    build: server
+    container_name: license-server-tests-backend
+    command: pytest
+    links:
+      - database
+    depends_on:
+      - database

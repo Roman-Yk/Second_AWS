@@ -1,0 +1,34 @@
+.row-bordered {
+	td {
+		border-left: 1px solid #eee; 
+
+		&:first-child {
+			border-left: none;
+		}
+	}
+}
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.btn-group-min-100 {
+	.btn {
+		min-width: 100px;
+	}
+}
+
+.user-license-edit {
+	margin-right: 10px;
+	margin-left: 10px;
+	border: none;
+	background: none;
+	padding: 0;
+	opacity: 0.3;
+	transition-duration: 0.2s;
+	outline: none !important;
+
+	&:hover, &:active {
+		opacity: 0.9;
+	}
+}

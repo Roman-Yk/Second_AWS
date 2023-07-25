@@ -1,0 +1,51 @@
+{% macro title(title, button = None) -%}
+<h4 class="d-flex justify-content-between align-items-center mb-3">
+	<span>{{ title }}</span>
+	{% if button %}
+	<button class="btn btn-success btn-sm px-4" disabled>{{ button }}</button>
+	{% endif %}
+</h4>
+{%- endmacro %}
+
+
+{% macro column_loading(column_title, column_add_button = None) %}
+{{ title(column_title, column_add_button) }}
+
+<ul class="list-group mb-3">
+	<li class="list-group-item list-group-item-action d-flex justify-content-center align-items-center p-5">
+		<div class="spinner-border" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+		<h5 class="m-0 ml-3 text-muted">Loading...</h5>
+	</li>
+</ul>
+{% endmacro %}
+
+
+{% macro column_table_loading(column_title, column_add_button = None) %}
+{{ title(column_title, column_add_button) }}
+
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<th class="text-center p-5">
+				<div class="spinner-border" role="status">
+					<span class="sr-only">Loading...</span>
+				</div>
+				<h5 class="m-0 ml-3 text-muted">Loading...</h5>
+			</th>
+		</tr>
+	</tbody>
+</table>
+{% endmacro %}
+
+
+{% macro column_waiting(column_title, column_description, column_add_button = None) %}
+{{ title(column_title, column_add_button) }}
+
+<div class="list-group p-0">
+  <a href="#" class="list-group-item list-group-item-action text-center p-0">
+    <h5 class="p-5">{{column_description}}</h5>
+  </a>
+</div>
+{% endmacro %}

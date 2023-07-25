@@ -1,0 +1,15 @@
+.inline-input {
+	display: inline;
+	width: 50px;
+	padding: 0 5px;
+	line-height: 1;
+	border: none;
+
+	&-width-100 {
+		width: 100px;
+	}
+}
+
+.w-100 {
+	width: 100%;
+}

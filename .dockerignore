@@ -1,0 +1,7 @@
+.vscode
+scripts/
+*.egg-info
+__pycache__
+.DS_Store
+*.sqlite
+env/

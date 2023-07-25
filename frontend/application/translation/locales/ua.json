@@ -1,0 +1,114 @@
+{
+    "add": "Додати",
+    "edit": "Редагувати",
+    "cancel": "Скасувати",
+    "copy": "Копіювати",
+    "close": "Закрити",
+    "copied": "Зкопійовано!",
+    "delete": "Видалити",
+    "save": "Зберегти",
+    "disable": "Деактивувати",
+    "disabled": "Неактивно",
+    "enable": "Активувати",
+    "enabled": "Активно",
+    "is_active": "Активно",
+    "deactivate": "Відключити",
+    "is_not_active": "Не активно",
+    "email": "Емейл",
+    "phone": "Номер телефону",
+    "first_name": "Імя",
+    "last_name": "Фамілія",
+    "loading": "Завантаження",
+    "type": "Тип",
+    "modals": {
+        "license_add": {
+            "title": "Додати нову ліцензію",
+            "fields": {
+                "name": "Назва",
+                "product": "Продукт",
+                "type": "Тип"
+            }
+        },
+        "product_add": {
+            "title": "Додати продукт",
+            "fields": {
+                "name": "Назва",
+                "description": "Опис"
+            }
+        },
+        "client_license_add": {
+            "title": "Створення клієнта",
+            "fields": {
+                "client": "Клієнт",
+                "computers_count": "Кількість компютерів"
+            }
+        },
+        "client_license_edit": {
+            "title": "Редагування клієнта",
+            "fields": {
+                "client": "Клієнт",
+                "first_name": "Імя",
+                "last_name": "Фамілія",
+                "new_password": "Новий пароль",
+                "email": "Емейл",
+                "phone": "Номер телефону",
+                "client_company": "Компанія клієнта",
+                "computers_count": "Кількість компютерів",
+                "expiration_date": "Дата закінчення",
+                "features": "Функціонал"
+            }
+        },
+        "client_computers": {
+            "title": "Компютери клієнтів"
+        }
+    },
+    "license_key": {
+        "title": "Ключ ліцензії"
+    },
+    "manager": {
+        "products": {
+            "title": "Мої продукти",
+            "add_license": "Додати ліцензію",
+            "not_found": "Продуктів не знайдено",
+            "list": {
+                "item": {
+                    "type": "Тип"
+                }
+            }
+        },
+        "client_licenses": {
+            "title": "Ліцензії клієнтів",
+            "refresh_list": "Оновити список",
+            "add_client_license": "Створити ліцензію",
+            "select_product": "Будь ласка оберіть продукт",
+            "not_found": "Клієнти для продукту '%{license_product_name} %{license_name}' не знайдено!",
+            "list": {
+                "item": {
+                    "registration_date": "Дата реєстрації",
+                    "expiration_date": "Дата закінчення",
+                    "active_computers": "Активні компютери",
+                    "active_computers_show": "Список"
+                }
+            }
+        }
+    },
+    "client": {
+        "licenses": {
+            "title": "Ліцензії",
+            "not_found": "Ліцензій не знайдено",
+            "list": {
+                "item": {
+                    "computers_count": "Кількість компютерів",
+                    "trial_expiration_days": "Днів до закінчення",
+                    "download_app": "Скачати v%{software_version}",
+                    "documentation": "Документація"
+                }
+            }
+        },
+        "computers": {
+            "title": "Компютери",
+            "select_a_license": "Виберіть ліцензію",
+            "license_has_not_been_activated": "Ліцензія не була активованою на жодному девайсі"
+        }
+    }
+}
