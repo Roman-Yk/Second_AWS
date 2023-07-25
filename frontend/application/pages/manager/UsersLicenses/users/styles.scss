@@ -1,0 +1,65 @@
+.license-key {
+	position: relative;
+	text-align: center;
+	background: #fafafa;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	border-radius: 0.5em;
+	border: 1px solid #eee;
+	overflow: hidden;
+
+	.license-key-key {
+		padding: 0.8em;
+		display: flex;
+
+		code {
+			word-break: break-all;
+			white-space: pre-line;
+			color: black;
+		}
+	}
+
+	.license-key-title {
+		border-bottom: 1px solid #eee;
+		// padding: 0.6em 0.8em;
+		color: rgba(0,0,0,0.3);
+		user-select: none;
+		-o-user-select: none;
+		-moz-user-select: none;
+		-webkit-user-select: none;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		&-left {
+			padding: 0 0.8em;
+			color: #000;
+		}
+	}
+
+	.license-key-footer {
+		border-top: 1px solid #eee;
+		// color: rgba(0,0,0,0.3);
+		text-align: left;
+		padding: 0.4em 0.8em;
+	}
+
+	.license-key-copy {
+		min-width: 80px;
+		font-size: 1em;
+		display: flex;
+		align-self: stretch;
+		justify-content: center;
+		align-items: center;
+		border-radius: 0;
+		height: 1.8em;
+		border-color: transparent transparent transparent #eee;
+		color: black;
+
+		&:hover, &:active {
+			color: white;
+		}
+	}
+}
