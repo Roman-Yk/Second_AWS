@@ -63,3 +63,38 @@
 		}
 	}
 }
+table {
+	table-layout: fixed;
+	min-width: 150%;
+	border: 1px solid var(--gh-grey-2);
+	border-collapse: collapse;
+	background-color: #ffffff;
+	box-sizing: border-box;
+	margin-top: 40px;
+  }
+  
+  thead {
+	background-color: rgb(216, 215, 215);
+	padding: 20px;
+	border: 1px solid var(--gh-grey-2);
+  }
+  
+  td {
+	padding: 0 20px;
+  }
+  th {
+	width: 190px;
+	border-top: 1px solid var(--gh-grey-2);
+	padding: 10px 20px;
+  }
+  tr {
+	width: 190px;
+	height: 40px;
+	border-top: 0.025rem solid var(--gh-grey-1);
+  }
+
+
+  .expand-btn{
+	background-color: transparent;
+	border: none;
+  }

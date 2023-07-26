@@ -26,6 +26,7 @@ from ...database.models._User import User, Manager, Client
 
 from licensing.database import Product, Company, License, ProductFeature
 from collections import defaultdict
+import json
 
 USER_ROLE_ADMIN = 1
 USER_ROLE_MANAGER = 2
@@ -169,66 +170,90 @@ def client_all(request):
 
     items = [dict(row) for row in result]
     query2 = text("""
-            SELECT
-    ul.*,
-    c.user_computer_id,
-    c.user_computer_active,
-    c.user_computer_hid,
-    c.user_computer_ip_address,
-    c.user_computer_os_name,
-    c.user_computer_login,
-    CAST(c.total_active_minutes AS SIGNED) AS total_active_minutes
+           SELECT
+    ul.user_id,
+    COUNT(ul.id) AS license_count,
+    JSON_ARRAYAGG(
+        JSON_OBJECT(
+            'id', ul.id,
+            'license_id', ul.license_id,
+            'is_enabled', ul.is_enabled,
+            'private_key', ul.private_key,
+            'public_key', ul.public_key,
+            'time_created', ul.time_created,
+            'time_login', ul.time_login,
+            'expiration_date', ul.expiration_date,
+            'features', features.features, 
+            'total_active_minutes', ul.total_active_minutes,
+            'count', ul.count
+        )
+    ) AS licenses
 FROM
-    licenses.user_license ul
+    (
+        SELECT
+            ul.*,
+            c.user_computer_id,
+            c.user_computer_active,
+            c.user_computer_hid,
+            c.user_computer_ip_address,
+            c.user_computer_os_name,
+            c.user_computer_login,
+            CAST(c.total_active_minutes AS SIGNED) AS total_active_minutes
+        FROM
+            licenses.user_license ul
+        LEFT JOIN (
+            SELECT
+                c.user_license_id,
+                MAX(c.id) AS user_computer_id,
+                MAX(c.is_active) AS user_computer_active,
+                MAX(c.h_id) AS user_computer_hid,
+                MAX(c.ip_address) AS user_computer_ip_address,
+                MAX(c.os_name) AS user_computer_os_name,
+                MAX(c.logged_username) AS user_computer_login,
+                CAST(SUM(tam.user_computer_active_minutes) AS SIGNED) AS total_active_minutes
+            FROM
+                licenses.computer c
+            LEFT JOIN licenses.user_computer_active_minutes_by_month tam
+            ON c.id = tam.user_computer_id
+            GROUP BY c.user_license_id
+        ) c ON ul.id = c.user_license_id
+    ) ul
 LEFT JOIN (
     SELECT
-        c.user_license_id,
-        MAX(c.id) AS user_computer_id,
-        MAX(c.is_active) AS user_computer_active,
-        MAX(c.h_id) AS user_computer_hid,
-        MAX(c.ip_address) AS user_computer_ip_address,
-        MAX(c.os_name) AS user_computer_os_name,
-        MAX(c.logged_username) AS user_computer_login,
-        CAST(SUM(tam.user_computer_active_minutes) AS SIGNED) AS total_active_minutes
+        p.id AS product_id,
+        p.name AS product_name,
+        p.description AS product_description,
+        JSON_ARRAYAGG(pf.name) AS features
     FROM
-        licenses.computer c
-    LEFT JOIN licenses.user_computer_active_minutes_by_month tam
-    ON c.id = tam.user_computer_id
-    GROUP BY c.user_license_id
-) c ON ul.id = c.user_license_id;
+        product p
+    LEFT JOIN product_feature pf ON p.id = pf.product_id
+    GROUP BY p.id
+) features ON ul.license_id = features.product_id
+GROUP BY ul.user_id;
+
 					""")
 
     result2 = request.dbsession.execute(query2)
     items2 = [dict(row) for row in result2]
-    
-    product_query = text("""
-                          SELECT
-    p.id AS product_id,
-    p.name AS product_name,
-    p.description AS product_description,
-    GROUP_CONCAT(pf.name) AS features
-FROM
-    product p
-LEFT JOIN product_feature pf ON p.id = pf.product_id
-GROUP BY p.id;
-""")
-    product_reult = request.dbsession.execute(product_query)
-    products = [dict(row) for row in product_reult]
-    
+   
     res = []
 
     for item in items:
         found = False
+        active_hours = 0
         for i in items2:
             if item['user_id'] == i['user_id']:
-                item['licenses'] = i
-                for p in products:
-                    if p['product_id'] == i['license_id']:
-                        item['licenses']['features']=p['features']
+                i['licenses'] = json.loads(i['licenses'])
+                item['licenses'] = i['licenses']
+                for l in i['licenses']:
+                    if l['total_active_minutes']:
+                        active_hours += l['total_active_minutes']
+                item['active_hours'] = active_hours
                 res.append(item.copy())
                 found = True
         if not found:
             item['licenses'] = {}
+            item['active_hours'] = 0
             res.append(item)
     
     return {"items": res}
@@ -253,69 +278,94 @@ def filter_user(request):
     items = [dict(row) for row in result]
 
     query2 = text("""
-              SELECT
-    ul.*,
-    c.user_computer_id,
-    c.user_computer_active,
-    c.user_computer_hid,
-    c.user_computer_ip_address,
-    c.user_computer_os_name,
-    c.user_computer_login,
-    CAST(c.total_active_minutes AS SIGNED) AS total_active_minutes
+            SELECT
+    ul.user_id,
+    COUNT(ul.id) AS license_count,
+    JSON_ARRAYAGG(
+        JSON_OBJECT(
+            'id', ul.id,
+            'license_id', ul.license_id,
+            'is_enabled', ul.is_enabled,
+            'private_key', ul.private_key,
+            'public_key', ul.public_key,
+            'time_created', ul.time_created,
+            'time_login', ul.time_login,
+            'expiration_date', ul.expiration_date,
+            'features', features.features, 
+            'total_active_minutes', ul.total_active_minutes,
+            'count', ul.count
+        )
+    ) AS licenses
 FROM
-    licenses.user_license ul
+    (
+        SELECT
+            ul.*,
+            c.user_computer_id,
+            c.user_computer_active,
+            c.user_computer_hid,
+            c.user_computer_ip_address,
+            c.user_computer_os_name,
+            c.user_computer_login,
+            CAST(c.total_active_minutes AS SIGNED) AS total_active_minutes
+        FROM
+            licenses.user_license ul
+        LEFT JOIN (
+            SELECT
+                c.user_license_id,
+                MAX(c.id) AS user_computer_id,
+                MAX(c.is_active) AS user_computer_active,
+                MAX(c.h_id) AS user_computer_hid,
+                MAX(c.ip_address) AS user_computer_ip_address,
+                MAX(c.os_name) AS user_computer_os_name,
+                MAX(c.logged_username) AS user_computer_login,
+                CAST(SUM(tam.user_computer_active_minutes) AS SIGNED) AS total_active_minutes
+            FROM
+                licenses.computer c
+            LEFT JOIN licenses.user_computer_active_minutes_by_month tam
+            ON c.id = tam.user_computer_id
+            GROUP BY c.user_license_id
+        ) c ON ul.id = c.user_license_id
+    ) ul
 LEFT JOIN (
     SELECT
-        c.user_license_id,
-        MAX(c.id) AS user_computer_id,
-        MAX(c.is_active) AS user_computer_active,
-        MAX(c.h_id) AS user_computer_hid,
-        MAX(c.ip_address) AS user_computer_ip_address,
-        MAX(c.os_name) AS user_computer_os_name,
-        MAX(c.logged_username) AS user_computer_login,
-        CAST(SUM(tam.user_computer_active_minutes) AS SIGNED) AS total_active_minutes
+        p.id AS product_id,
+        p.name AS product_name,
+        p.description AS product_description,
+        JSON_ARRAYAGG(pf.name) AS features
     FROM
-        licenses.computer c
-    LEFT JOIN licenses.user_computer_active_minutes_by_month tam
-    ON c.id = tam.user_computer_id
-    GROUP BY c.user_license_id
-) c ON ul.id = c.user_license_id;
+        product p
+    LEFT JOIN product_feature pf ON p.id = pf.product_id
+    GROUP BY p.id
+) features ON ul.license_id = features.product_id
+GROUP BY ul.user_id;
+
 					""")
 
     result2 = request.dbsession.execute(query2)
     items2 = [dict(row) for row in result2]
-
-    product_query = text("""
-                          SELECT
-    p.id AS product_id,
-    p.name AS product_name,
-    p.description AS product_description,
-    GROUP_CONCAT(pf.name) AS features
-FROM
-    product p
-LEFT JOIN product_feature pf ON p.id = pf.product_id
-GROUP BY p.id;
-""")
-    product_reult = request.dbsession.execute(product_query)
-    products = [dict(row) for row in product_reult]
-    
+   
     res = []
 
     for item in items:
         found = False
+        active_hours = 0
         for i in items2:
             if item['user_id'] == i['user_id']:
-                item['licenses'] = i
-                for p in products:
-                    if p['product_id'] == i['license_id']:
-                        item['licenses']['features']=p['features']
+                i['licenses'] = json.loads(i['licenses'])
+                item['licenses'] = i['licenses']
+                for l in i['licenses']:
+                    if l['total_active_minutes']:
+                        active_hours += l['total_active_minutes']
+                item['active_hours'] = active_hours
                 res.append(item.copy())
                 found = True
         if not found:
             item['licenses'] = {}
+            item['active_hours'] = 0
             res.append(item)
-            
+    
     return {"items": res}
+
 
 
 @view_config(route_name="client_all_for_license", renderer="json", permission="manager", request_method="POST", validator=SchemaClientsForLicense())

@@ -80,13 +80,14 @@ const useModalTop = (shown) => {
 }
 
 
-const User = ({ user }) => {
+const User = ({ user, license }) => {
+    console.log(user)
     const t = useTranslate();
-    const [state, setState] = useState(user.licenses.is_enabled);
+    const [state, setState] = useState(license.is_enabled);
 
     useEffect(() => {
-        setState(user.licenses.is_enabled);
-    }, [user.licenses.is_enabled]);
+        setState(license.is_enabled);
+    }, [license.is_enabled]);
 
     const [isMoreInfoShown, handleShowMoreInfo, handleHideMoreInfo] = useToggle(false);
     const [isEditing, handleShowEdit, handleHideEdit] = useToggle(false);
@@ -95,14 +96,14 @@ const User = ({ user }) => {
     const [infoButtonRef, infoModalTop] = useModalTop(isMoreInfoShown);
 
     const handleEnableClick = React.useCallback(() => {
-        return userLicenseEnable({ user_license_id: user.licenses.id })
+        return userLicenseEnable({ user_license_id: license.id })
             .then(res => setState(res.item.is_enabled));
-    }, [user.licenses.id]);
+    }, [license.id]);
 
     const handleDisableClick = React.useCallback(() => {
-        return userLicenseDisable({ user_license_id: user.licenses.id })
+        return userLicenseDisable({ user_license_id: license.id })
             .then(res => setState(res.item.is_enabled));
-    }, [user.licenses.id]);
+    }, [license.id]);
 
     return (
         <li className="list-group-item">
@@ -140,11 +141,11 @@ const User = ({ user }) => {
                     </li>
 
                     <li>
-                        Active hours : {(user.licenses.total_active_minutes / 60).toFixed(2)}
+                        Active hours : {(license.total_active_minutes / 60).toFixed(2)}
                     </li>
 
                 </ul>
-                <CustomLicenseKey licenseKey={user.licenses} />
+                <CustomLicenseKey licenseKey={license} />
 
             </small>
 
@@ -152,7 +153,7 @@ const User = ({ user }) => {
                 <UserEditModal
                     top={editModalTop}
                     client={user}
-                    userLicense={user.licenses}
+                    userLicense={license}
                     isOpened={isEditing}
                     handleClose={handleHideEdit}
                 />
@@ -162,7 +163,7 @@ const User = ({ user }) => {
             <If condition={isMoreInfoShown}>
                 <ClientComputersListModal
                     top={infoModalTop}
-                    userLicenseId={user.licenses.id}
+                    userLicenseId={license.id}
                     isOpened={isMoreInfoShown}
                     handleClose={handleHideMoreInfo}
                 />

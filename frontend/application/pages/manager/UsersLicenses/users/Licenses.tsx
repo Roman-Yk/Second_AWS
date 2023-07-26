@@ -36,7 +36,7 @@ export const CustomLicenseKey = ({ licenseKey }) => {
                                 <div key={licenseKey.id}>{licenseKey.public_key}</div>
                             </code>
                         </span>
-                        Features: {licenseKey.features}
+                        Features:{licenseKey.features.join(', ')}
                     </div>
             </div>
         );
